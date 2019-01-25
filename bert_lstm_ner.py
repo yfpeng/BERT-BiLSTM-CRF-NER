@@ -591,14 +591,14 @@ def main(_):
                 del_file(FLAGS.output_dir)
             except Exception as e:
                 print(e)
-                print('pleace remove the files of output dir and data.conf')
+                print('please remove the files of output dir and data.conf')
                 exit(-1)
         if os.path.exists(FLAGS.data_config_path):
             try:
                 os.remove(FLAGS.data_config_path)
             except Exception as e:
                 print(e)
-                print('pleace remove the files of output dir and data.conf')
+                print('please remove the files of output dir and data.conf')
                 exit(-1)
     task_name = FLAGS.task_name.lower()
     if task_name not in processors:
@@ -783,7 +783,7 @@ def main(_):
                     tf.logging.info(predict_line.text)
                     tf.logging.info(predict_line.label)
                 for id in prediction:
-                    if idx > len_seq:
+                    if idx >= len_seq:
                         break
                     if id == 0:
                         continue
@@ -838,8 +838,8 @@ def get_last_checkpoint(model_path):
 def adam_filter(model_path):
     """
     去掉模型中的Adam相关参数，这些参数在测试的时候是没有用的
-    :param model_path: 
-    :return: 
+    :param model_path:
+    :return:
     """
     last_name = get_last_checkpoint(model_path)
     if last_name is None:
